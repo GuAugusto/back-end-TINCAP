@@ -1,7 +1,5 @@
 package com.projetoIntegradorGeneration.projetoIntegradorGeneration.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tb_informacaoesfamilia")
+@Table(name = "tb_informacoes_familia")
 public class InformacoesFamiliaModel {
 	
 	@Id
@@ -31,13 +29,7 @@ public class InformacoesFamiliaModel {
 	private boolean pessoasComDeficiencia;
 	
 	@NotNull
-	private String descricao;
-	
-	@NotBlank
-	private List<String> nomeMembros;
-	
-	@NotBlank
-	private List<Integer> idadeMembros;
+	private String descricaoSituacao;
 
 	public long getId() {
 		return id;
@@ -80,27 +72,11 @@ public class InformacoesFamiliaModel {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return descricaoSituacao;
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public List<String> getNomeMembros() {
-		return nomeMembros;
-	}
-
-	public void setNomeMembros(List<String> nomeMembros) {
-		this.nomeMembros = nomeMembros;
-	}
-
-	public List<Integer> getIdadeMembros() {
-		return idadeMembros;
-	}
-
-	public void setIdadeMembros(List<Integer> idadeMembros) {
-		this.idadeMembros = idadeMembros;
+		this.descricaoSituacao = descricao;
 	}
 	
 }
