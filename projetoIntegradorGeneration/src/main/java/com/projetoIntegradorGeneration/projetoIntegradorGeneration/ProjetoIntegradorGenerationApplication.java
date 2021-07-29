@@ -1,0 +1,13 @@
+package com.projetoIntegradorGeneration.projetoIntegradorGeneration;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ProjetoIntegradorGenerationApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProjetoIntegradorGenerationApplication.class, args);
+	}
+
+}
