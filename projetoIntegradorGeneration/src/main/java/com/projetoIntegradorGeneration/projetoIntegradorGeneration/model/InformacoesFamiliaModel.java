@@ -11,23 +11,23 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "tb_informacoes_familia")
 public class InformacoesFamiliaModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotBlank
 	private double rendaFamiliar;
-	
+
 	@NotBlank
 	private int quantidadeMembrosFamilia;
-	
+
 	@NotBlank
 	private boolean cadastroProgramasSociais;
-	
+
 	@NotBlank
 	private boolean pessoasComDeficiencia;
-	
+
 	@NotNull
 	private String descricaoSituacao;
 
@@ -78,5 +78,5 @@ public class InformacoesFamiliaModel {
 	public void setDescricao(String descricao) {
 		this.descricaoSituacao = descricao;
 	}
-	
+
 }
