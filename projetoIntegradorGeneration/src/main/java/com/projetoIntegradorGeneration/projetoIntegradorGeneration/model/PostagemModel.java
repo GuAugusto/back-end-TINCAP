@@ -39,6 +39,10 @@ public class PostagemModel {
     @ManyToOne
     @JsonIgnoreProperties("postagem")
     private InformacoesFamiliaModel familia;
+    
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private UsuarioModel usuario;
 
 	public long getId() {
 		return id;
@@ -79,4 +83,13 @@ public class PostagemModel {
 	public void setFamilia(InformacoesFamiliaModel familia) {
 		this.familia = familia;
 	}
+
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
+
 }
