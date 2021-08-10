@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -22,16 +23,14 @@ public class InformacoesFamiliaModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
+	@Min(1)
 	private double rendaFamiliar;
 
-	@NotBlank
+	@Min(1)
 	private int quantidadeMembrosFamilia;
 
-	@NotBlank
 	private boolean cadastroProgramasSociais;
 
-	@NotBlank
 	private boolean pessoasComDeficiencia;
 
 	@NotNull

@@ -19,7 +19,7 @@ import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.Postage
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.repository.PostagemRepository;
 
 @RestController
-@RequestMapping("/postagem")
+@RequestMapping("/postagens")
 @CrossOrigin("*")
 public class PostagemController {
 

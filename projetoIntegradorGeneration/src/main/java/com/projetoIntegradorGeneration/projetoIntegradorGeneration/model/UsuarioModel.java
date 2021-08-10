@@ -29,11 +29,11 @@ public class UsuarioModel {
 	
 	@NotBlank
 	@Size(min = 5,max = 100)
+	@Email
 	private String email;
 	
 	@NotBlank
 	@Size (min = 2, max = 100)
-	@Email
 	private String usuario;
 
 	@NotBlank
