@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -30,6 +31,11 @@ public class UsuarioModel {
 	@Size(min = 5,max = 100)
 	private String email;
 	
+	@NotBlank
+	@Size (min = 2, max = 100)
+	@Email
+	private String usuario;
+
 	@NotBlank
 	@Size(min = 8)
 	private String senha;
@@ -60,6 +66,14 @@ public class UsuarioModel {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
