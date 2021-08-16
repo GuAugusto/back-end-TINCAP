@@ -20,4 +20,4 @@ public class ProjetoIntegradorGenerationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoIntegradorGenerationApplication.class, args);
 	}
-}
+}  
