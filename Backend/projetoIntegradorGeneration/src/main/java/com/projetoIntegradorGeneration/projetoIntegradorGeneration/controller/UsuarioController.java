@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.UsuarioLogin;
-import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.UsuarioModel;
+import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.Usuario;
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.repository.UsuarioRepository;
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.service.UsuarioService;
 
@@ -33,31 +33,31 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@GetMapping
-	public ResponseEntity<List<UsuarioModel>> getAll() {
+	public ResponseEntity<List<Usuario>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 		
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<UsuarioModel> getById(@PathVariable long id){
+	public ResponseEntity<Usuario> getById(@PathVariable long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 		
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List <UsuarioModel>> getByNome(@PathVariable String nome){
+	public ResponseEntity<List <Usuario>> getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeCompletoContainingIgnoreCase(nome));
 		
 	}
 	
 	@PostMapping
-	public ResponseEntity<UsuarioModel> post (@RequestBody UsuarioModel usuario){
+	public ResponseEntity<Usuario> post (@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 		
 	}
 	
 	@PutMapping
-	public ResponseEntity<UsuarioModel> put(@RequestBody UsuarioModel usuario){
+	public ResponseEntity<Usuario> put(@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(usuario));	
 	}
 	
@@ -73,15 +73,15 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<UsuarioModel> cadastrarUsuario(@RequestBody UsuarioModel usuario) {
+	public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
 	}
 
 	@PutMapping("/alterar")
-	public ResponseEntity<UsuarioModel> updateUsuario(@RequestBody UsuarioModel usuario) {
+	public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuario) {
 
-		Optional<UsuarioModel> updateUsuario = usuarioService.atualizarUsuario(usuario);
+		Optional<Usuario> updateUsuario = usuarioService.atualizarUsuario(usuario);
 		try {
 			return ResponseEntity.ok(updateUsuario.get());
 		} 

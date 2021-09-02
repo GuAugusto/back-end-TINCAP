@@ -15,39 +15,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.InformacoesFamiliaModel;
-import com.projetoIntegradorGeneration.projetoIntegradorGeneration.repository.InformacoesFamiliaRepository;
+import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.Tema;
+import com.projetoIntegradorGeneration.projetoIntegradorGeneration.repository.TemaRepository;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/informacoesfamilia")
-public class InformacoesFamiliaController {
+@RequestMapping("/tema")
+public class TemaController {
 
 	@Autowired
-	private InformacoesFamiliaRepository repository;
+	private TemaRepository repository;
 
 	@GetMapping
-	public ResponseEntity<List<InformacoesFamiliaModel>> getAll() {
+	public ResponseEntity<List<Tema>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<InformacoesFamiliaModel> getById(@PathVariable long id) {
+	public ResponseEntity<Tema> getById(@PathVariable long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/renda/{renda}")
-	public ResponseEntity<List<InformacoesFamiliaModel>> getByRenda(@PathVariable double rendaFamiliar) {
-		return ResponseEntity.ok(repository.findAllByRendaFamiliar(rendaFamiliar));
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity<List<Tema>> getByRenda(@PathVariable String descricao) {
+		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 
 	@PostMapping
-	public ResponseEntity<InformacoesFamiliaModel> post(@RequestBody InformacoesFamiliaModel informacoes) {
+	public ResponseEntity<Tema> post(@RequestBody Tema informacoes) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(informacoes));
 	}
 
 	@PutMapping
-	public ResponseEntity<InformacoesFamiliaModel> put(@RequestBody InformacoesFamiliaModel informacoes) {
+	public ResponseEntity<Tema> put(@RequestBody Tema informacoes) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(informacoes));
 	}
 
