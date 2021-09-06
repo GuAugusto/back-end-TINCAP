@@ -30,10 +30,6 @@ public class Usuario {
 	@NotBlank
 	@Size(min = 5,max = 100)
 	@Email
-	private String email;
-	
-	@NotBlank
-	@Size (min = 2, max = 100)
 	private String usuario;
 
 	@NotBlank
@@ -62,14 +58,6 @@ public class Usuario {
 
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	
 	public String getUsuario() {

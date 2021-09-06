@@ -77,7 +77,7 @@ public class Postagem {
 	}
 	
 	
-
+	
 	public Tema getTema() {
 		return tema;
 	}
