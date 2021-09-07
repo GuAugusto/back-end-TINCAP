@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.apache.commons.codec.binary.Base64;
 
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.UsuarioLogin;
-import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.UsuarioModel;
+import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.Usuario;
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.repository.UsuarioRepository;
 
 @Service
@@ -21,7 +21,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	public UsuarioModel cadastrarUsuario(UsuarioModel usuario) {
+	public Usuario cadastrarUsuario(Usuario usuario) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String senhaEncoder = encoder.encode(usuario.getSenha());
@@ -29,7 +29,7 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 
-	public Optional<UsuarioModel> atualizarUsuario(UsuarioModel usuario) {
+	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
 		if (usuarioRepository.findById(usuario.getId()).isPresent()) {
 
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -50,7 +50,7 @@ public class UsuarioService {
 	public Optional<UsuarioLogin> loginUsuario(Optional<UsuarioLogin> usuarioLogin) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<UsuarioModel> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
+		Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
 
 		if (usuario.isPresent()) {
 			if (encoder.matches(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {

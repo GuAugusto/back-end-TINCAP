@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.PostagemModel;
+import com.projetoIntegradorGeneration.projetoIntegradorGeneration.model.Postagem;
 import com.projetoIntegradorGeneration.projetoIntegradorGeneration.repository.PostagemRepository;
 
 @RestController
@@ -27,31 +27,31 @@ public class PostagemController {
 	private PostagemRepository repository; 
 	
 	@GetMapping
-	public ResponseEntity<List<PostagemModel>> GetAll(){
+	public ResponseEntity<List<Postagem>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
 		
 	}
 	
 	@GetMapping("/{id}")
-    public ResponseEntity<PostagemModel> getById(@PathVariable long id){
+    public ResponseEntity<Postagem> getById(@PathVariable long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 		
 	}	
 	
 	@GetMapping("/titulo/{titulo}")
-    public ResponseEntity<List<PostagemModel>> GetByTitulo(@PathVariable String titulo){
+    public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 		
 	}	
 	
 	@PostMapping
-	public ResponseEntity<PostagemModel> post (@RequestBody PostagemModel postagem){
+	public ResponseEntity<Postagem> post (@RequestBody Postagem postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 		
 	}
 	
 	@PutMapping
-	public ResponseEntity<PostagemModel> put(@RequestBody PostagemModel postagem){
+	public ResponseEntity<Postagem> put(@RequestBody Postagem postagem){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));	
 	}
 	

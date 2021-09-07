@@ -17,12 +17,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_postagem")
-public class PostagemModel {
+public class Postagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; 
-	
 	
 	@NotBlank
 	@Size(max = 50)
@@ -38,11 +37,12 @@ public class PostagemModel {
 
     @ManyToOne
     @JsonIgnoreProperties("postagem")
-    private InformacoesFamiliaModel familia;
+    private Tema tema;
+    
     
     @ManyToOne
     @JsonIgnoreProperties("postagem")
-    private UsuarioModel usuario;
+    private Usuario usuario;
 
 	public long getId() {
 		return id;
@@ -76,19 +76,21 @@ public class PostagemModel {
 		this.data = data;
 	}
 	
-	public InformacoesFamiliaModel getFamilia() {
-		return familia;
+	
+	
+	public Tema getTema() {
+		return tema;
 	}
 
-	public void setFamilia(InformacoesFamiliaModel familia) {
-		this.familia = familia;
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 
-	public UsuarioModel getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(UsuarioModel usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
